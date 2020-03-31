@@ -9,7 +9,11 @@ export const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     backgroundColor: '#535353',
     '& img': {
-      width: '200px'
+      width: '178px'
+    },
+    [theme.breakpoints.down('xs')]: {
+      display: 'flex',
+      justifyContent: 'center'
     }
   }
 }))

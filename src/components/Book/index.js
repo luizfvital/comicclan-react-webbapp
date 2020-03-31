@@ -1,5 +1,8 @@
 import React from 'react'
 
-const Book = () => <div>BOOK</div>
+const Book = props => {
+  console.log(props)
+  return <div>BOOK</div>
+}
 
 export default Book
