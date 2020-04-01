@@ -6,8 +6,6 @@ import App from './App'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { theme } from './appTheme'
 
-console.log(theme)
-
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <React.StrictMode>

@@ -9,12 +9,5 @@ export const useStyles = makeStyles(theme => ({
     border: '3px solid #777777',
     boxSizing: 'border-box',
     borderRadius: '8px'
-  },
-  categoryTagsContainer: {
-    marginTop: '28px',
-    [theme.breakpoints.down('xs')]: {
-      display: 'flex',
-      justifyContent: 'space-around'
-    }
   }
 }))
