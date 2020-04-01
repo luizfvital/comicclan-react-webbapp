@@ -6,10 +6,18 @@ export const theme = createMuiTheme({
       main: '#F15454'
     },
     text: {
-      primary: '#CCCCCC'
+      primary: '#CCCCCC',
+      secondary: '#AAAAAA',
+      tertiary: '#999999'
     },
     background: {
       default: '#333333'
     }
-  }
+  },
+  typography: {
+    h4: {
+      fontSize: '32px'
+    }
+  },
+  default: { marginTop: '28px' }
 })

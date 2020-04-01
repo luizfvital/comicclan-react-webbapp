@@ -12,14 +12,14 @@ import { Container } from './components/common/Container'
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100vw',
-    height: '100vh',
     backgroundColor: theme.palette.background.default,
     fontFamily: 'Roboto'
   }
 }))
 
-function App() {
+const App = () => {
   const classes = useStyles()
+
   return (
     <div className={classes.root}>
       <Header />

@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export const useStyles = makeStyles(theme => ({
-  header: {
+  root: {
     maxWidth: '1440px',
     height: '73px',
     padding: '0 20px',

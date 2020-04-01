@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: '28px'
+    marginTop: theme.default.marginTop
   },
   input: {
     height: '60px',

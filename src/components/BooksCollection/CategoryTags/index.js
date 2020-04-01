@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 // Components
 import CategoryTag from './CategoryTag'
 
-import { CATEGORY_NAMES } from '../../../utils/constants'
+import { CATEGORY_NAMES } from '../../../utils/constants/constants'
 
 import { useStyles } from './styles'
 
@@ -35,7 +35,7 @@ const CategoryTags = () => {
   }
 
   return (
-    <div className={classes.categoryTagsContainer}>
+    <div className={classes.root}>
       <CategoryTag
         handleClick={handleClick}
         isActive={isActive.year}
