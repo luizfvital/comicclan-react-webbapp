@@ -12,6 +12,9 @@ export const theme = createMuiTheme({
     },
     background: {
       default: '#333333'
+    },
+    links: {
+      color: '#777777'
     }
   },
   typography: {

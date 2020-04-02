@@ -1,6 +1,5 @@
 import React from 'react'
 
-// Images
 import logo from '../../assets/png/Logo@2x.png'
 
 import { useStyles } from './styles'

@@ -7,7 +7,7 @@ export const fetchBooksStart = () => ({
 
 export const fetchBooksSuccess = booksCollection => ({
   type: BookActionTypes.FETCH_BOOKS_SUCCESS,
-  payload: booksCollection.data
+  payload: booksCollection
 })
 
 export const fetchBooksError = error => ({
@@ -15,12 +15,16 @@ export const fetchBooksError = error => ({
   payload: error
 })
 
-export const fetchBooksStartAsync = () => dispatch => {
+export const fetchBooksStartAsync = searchInput => async dispatch => {
   dispatch(fetchBooksStart())
-  api
-    .get()
-    .then(result => {
-      dispatch(fetchBooksSuccess(result))
-    })
-    .catch(error => dispatch(fetchBooksError(error.message)))
+  try {
+    const response = await api(searchInput).get()
+    const booksCollectionWithId = response.data.map(book => ({
+      ...book,
+      id: `${book.year}${book.name.split('#')[1]}`
+    }))
+    dispatch(fetchBooksSuccess(booksCollectionWithId))
+  } catch (error) {
+    return dispatch(fetchBooksError(error.message))
+  }
 }

@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 
-// Components
 import CategoryTag from './CategoryTag'
 
 import { CATEGORY_NAMES } from '../../../utils/constants/constants'
 
 import { useStyles } from './styles'
 
-const CategoryTags = () => {
+const CategoryTagsContainer = () => {
   const classes = useStyles()
 
   const [isActive, setIsActive] = useState({
@@ -65,4 +64,4 @@ const CategoryTags = () => {
   )
 }
 
-export default CategoryTags
+export default CategoryTagsContainer

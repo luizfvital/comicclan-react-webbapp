@@ -7,12 +7,13 @@ import BookCard from './BookCard'
 
 import { useStyles } from './styles'
 
-const CategoryListContainer = () => {
+const BooksByCategoryDirectory = ({ groupKey, books }) => {
   const classes = useStyles()
+
   return (
     <div className={classes.root}>
       <Typography variant='h4' color='textSecondary' style={{}}>
-        2019
+        {groupKey}
       </Typography>
       <div className={classes.scrollContainer}>
         <div
@@ -22,19 +23,18 @@ const CategoryListContainer = () => {
             paddingBottom: '20px'
           }}
         >
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
+          {books.map(book => (
+            <BookCard
+              key={book.id}
+              name={book.name}
+              owner={book.owner}
+              image={book.image}
+            />
+          ))}
         </div>
       </div>
     </div>
   )
 }
 
-export default CategoryListContainer
+export default BooksByCategoryDirectory

@@ -5,16 +5,18 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 
-import image from '../../../../assets/png/imag_placeholder1@2x.png'
-
 import { useStyles } from './styles'
 
-const BookCard = () => {
+const BookCard = ({ name, owner, image }) => {
   const classes = useStyles()
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia className={classes.media} image={image} title='Book Name' />
+        <CardMedia
+          className={classes.media}
+          image={image}
+          title={`${name} - ${owner}`}
+        />
         <CardContent className={classes.content}>
           <Typography
             gutterBottom
@@ -22,7 +24,7 @@ const BookCard = () => {
             component='h2'
             className={classes.bookName}
           >
-            Book Name
+            {name}
           </Typography>
           <div className={classes.usernameDiv}>
             <Typography
@@ -39,7 +41,7 @@ const BookCard = () => {
               component='p'
               className={classes.userName}
             >
-              Username
+              {owner}
             </Typography>
           </div>
         </CardContent>

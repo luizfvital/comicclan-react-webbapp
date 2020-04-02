@@ -5,6 +5,7 @@ export const useStyles = makeStyles(theme => ({
     marginTop: theme.default.marginTop,
     marginRight: '96px',
     width: '200px',
+    height: '454.63px',
     backgroundColor: 'transparent',
     boxShadow: 'none'
   },
@@ -19,14 +20,17 @@ export const useStyles = makeStyles(theme => ({
   bookName: {
     color: theme.palette.text.primary,
     fontWeight: 'bold',
-    fontSize: '22px'
+    fontSize: '22px',
+    marginLeft: '5px'
   },
   usernameDiv: {
-    display: 'flex'
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   ownedBy: {
     color: theme.palette.text.tertiary,
-    fontSize: '16px'
+    fontSize: '16px',
+    marginLeft: '5px'
   },
   userName: {
     color: theme.palette.text.primary,

@@ -2,12 +2,9 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export const useStyles = makeStyles(theme => ({
   root: {
-    // backgroundColor: theme.palette.background.default,
-    background:
-      'linear-gradient(0deg, rgba(238,238,238,0) 0%, rgba(51,51,51,1) 100%)',
     position: 'sticky',
-    top: -5,
-    zIndex: 10,
+    top: -10,
+    zIndex: 100,
     padding: '28px 0',
     [theme.breakpoints.down('xs')]: {
       display: 'flex',

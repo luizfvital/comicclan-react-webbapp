@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { DebounceInput } from 'react-debounce-input'
 import { connect } from 'react-redux'
 
@@ -13,11 +13,8 @@ import { fetchBooksStartAsync } from '../../../redux/book/bookActions'
 import { useStyles } from './styles'
 
 const SearchInput = ({ fetchBooks }) => {
-  const [searchInput, setSearchInput] = useState('')
-
   const handleChange = evt => {
-    setSearchInput(evt.target.value)
-    fetchBooks()
+    fetchBooks(evt.target.value)
   }
 
   const classes = useStyles()
@@ -26,7 +23,7 @@ const SearchInput = ({ fetchBooks }) => {
       <img src={searchIcon} alt='Search Icon' className={classes.image} />
       <DebounceInput
         element={TextField}
-        debounceTimeout={400}
+        debounceTimeout={300}
         onChange={handleChange}
         variant='outlined'
         fullWidth
@@ -40,7 +37,7 @@ const SearchInput = ({ fetchBooks }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchBooks: () => dispatch(fetchBooksStartAsync())
+  fetchBooks: searchInput => dispatch(fetchBooksStartAsync(searchInput))
 })
 
 export default connect(null, mapDispatchToProps)(SearchInput)
