@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
@@ -7,11 +8,14 @@ import Typography from '@material-ui/core/Typography'
 
 import { useStyles } from './styles'
 
-const BookCard = ({ name, owner, image }) => {
+const BookCard = ({ id, name, owner, image, history }) => {
   const classes = useStyles()
+
+  const handleClick = () => history.push(`/book/${id}`)
+
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea onClick={handleClick}>
         <CardMedia
           className={classes.media}
           image={image}
@@ -50,4 +54,4 @@ const BookCard = ({ name, owner, image }) => {
   )
 }
 
-export default BookCard
+export default withRouter(BookCard)

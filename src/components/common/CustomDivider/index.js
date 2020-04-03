@@ -6,6 +6,6 @@ export const CustomDivider = withStyles({
   root: {
     height: '2px',
     backgroundColor: '#535353',
-    marginBottom: '80px'
+    marginBottom: '60px'
   }
 })(Divider)

@@ -25,6 +25,7 @@ export const useStyles = makeStyles(theme => ({
   bookContainer: {
     marginTop: theme.default.marginTop,
     display: 'flex',
+    marginBottom: '72px',
     [theme.breakpoints.down(1200)]: {
       flexWrap: 'wrap',
       justifyContent: 'center'
@@ -52,6 +53,7 @@ export const useStyles = makeStyles(theme => ({
   },
   bookName: {
     fontSize: '32px',
+    fontWeight: 'bold',
     color: theme.palette.text.secondary,
     marginRight: '20px',
     [theme.breakpoints.down(1200)]: {
@@ -66,9 +68,20 @@ export const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     [theme.breakpoints.down(1200)]: {
-      // flexDirection: 'column',
-      // alignItems: 'center',
+      flexWrap: 'wrap',
       marginTop: '40px'
+    }
+  },
+  otherRandomBooks: {
+    fontSize: '32px',
+    color: theme.palette.text.secondary,
+    marginRight: '20px',
+    [theme.breakpoints.down(1200)]: {
+      flexDirection: 'column',
+      alignItems: 'center'
+    },
+    [theme.breakpoints.down(600)]: {
+      fontSize: '26px'
     }
   }
 }))

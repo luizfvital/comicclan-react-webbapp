@@ -7,7 +7,10 @@ export const useStyles = makeStyles(theme => ({
     width: '200px',
     height: '454.63px',
     backgroundColor: 'transparent',
-    boxShadow: 'none'
+    boxShadow: 'none',
+    '&:last-child': {
+      marginRight: 0
+    }
   },
   media: {
     width: '200px',

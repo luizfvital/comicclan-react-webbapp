@@ -3,7 +3,7 @@ import React from 'react'
 // Material UI
 import Typography from '@material-ui/core/Typography'
 
-import BookCard from './BookCard'
+import BookCard from '../../common/BookCard'
 
 import { useStyles } from './styles'
 
@@ -25,6 +25,7 @@ const BooksByCategoryDirectory = ({ groupKey, books }) => {
         >
           {books.map(book => (
             <BookCard
+              id={book.id}
               key={book.id}
               name={book.name}
               owner={book.owner}

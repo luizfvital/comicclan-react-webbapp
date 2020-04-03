@@ -4,8 +4,9 @@ import Typography from '@material-ui/core/Typography'
 
 import { useStyles } from './styles'
 
-const BookDetails = () => {
+const BookDetails = props => {
   const classes = useStyles()
+  const { writer, artist, publication, owner } = props
   return (
     <div className={classes.bookDetails}>
       <div className={classes.detailContainer}>
@@ -13,7 +14,7 @@ const BookDetails = () => {
           Writer:
         </Typography>
         <Typography variant='body2' className={classes.detail}>
-          Foo W. Riter
+          {writer}
         </Typography>
       </div>
       <div className={classes.detailContainer}>
@@ -21,7 +22,7 @@ const BookDetails = () => {
           Artist:
         </Typography>
         <Typography variant='body2' className={classes.detail}>
-          Bar A. Rtist
+          {artist}
         </Typography>
       </div>
       <div className={classes.detailContainer}>
@@ -29,7 +30,7 @@ const BookDetails = () => {
           Publication:
         </Typography>
         <Typography variant='body2' className={classes.detail}>
-          Acme Co.
+          {publication}
         </Typography>
       </div>
       <div className={classes.detailContainer}>
@@ -37,7 +38,7 @@ const BookDetails = () => {
           Owner:
         </Typography>
         <Typography variant='body2' className={classes.detail}>
-          Comicdude71
+          {owner}
         </Typography>
       </div>
     </div>

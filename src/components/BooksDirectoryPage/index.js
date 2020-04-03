@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 // Components
@@ -9,27 +9,51 @@ import { CustomDivider } from '../common/CustomDivider'
 
 import { useStyles } from './styles'
 
-import {
-  groupByYear,
-  groupByWriter,
-  groupByArtist,
-  groupByOwner
-} from '../../utils/helper-functions/groupBy'
+import { groupBy } from '../../utils/helper-functions/groupBy'
 
 const BooksDirectoryPage = ({ collection, match }) => {
   const classes = useStyles()
 
-  let groupedCollection
-  let groupKeys
-  let toRender
+  const { category } = match.params
 
-  if (collection) {
-    groupedCollection = groupByYear(collection)
-    groupKeys = Object.keys(groupedCollection).sort((a, b) => b - a)
-    // const groupKeys = Object.keys(groupedCollection).sort()
-    const listContainers = groupKeys.map((key, index) => {
-      while (index < groupKeys.length - 1) {
-        return (
+  const [groupedCollection, setGroupedCollection] = useState({})
+  const [selectedCategory, setSelectedCategory] = useState('year')
+
+  useEffect(() => {
+    if (collection) {
+      const groupByCategory = () => {
+        setGroupedCollection(groupBy(selectedCategory)(collection))
+      }
+      groupByCategory()
+    }
+  }, [collection, selectedCategory])
+
+  useEffect(() => {
+    const setCategoryToGroupBy = () => {
+      if (category === undefined) {
+        setSelectedCategory('year')
+      } else {
+        setSelectedCategory(category)
+      }
+    }
+    setCategoryToGroupBy()
+  }, [category])
+
+  if (!groupedCollection) {
+    return (
+      <div className={classes.root}>
+        <SearchInput />
+        <CategoryTagsContainer />
+      </div>
+    )
+  } else {
+    const groupKeys = Object.keys(groupedCollection).sort((a, b) => b - a)
+
+    return (
+      <div className={classes.root}>
+        <SearchInput />
+        <CategoryTagsContainer />
+        {groupKeys.map(key => (
           <div key={`${key.trim()}`}>
             <BooksByCategoryDirectory
               key={`${key.trim()}`}
@@ -38,34 +62,10 @@ const BooksDirectoryPage = ({ collection, match }) => {
             />
             <CustomDivider />
           </div>
-        )
-      }
-      return (
-        <div key={`${key.trim()}`}>
-          <BooksByCategoryDirectory
-            groupKey={key}
-            books={groupedCollection[key]}
-          />
-        </div>
-      )
-    })
-    toRender = () => (
-      <div className={classes.root}>
-        <SearchInput />
-        <CategoryTagsContainer />
-        {listContainers}
-      </div>
-    )
-  } else {
-    toRender = () => (
-      <div className={classes.root}>
-        <SearchInput />
-        <CategoryTagsContainer />
+        ))}
       </div>
     )
   }
-
-  return toRender()
 }
 
 const mapStateToProps = state => ({

@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 
 // Components
 import SearchInput from './SearchInput'
-import CategoryTags from './CategoryTags'
-import CategoryListContainer from './CategoryListContainer'
+import CategoryTagsContainer from './CategoryTagsContainer'
+import BooksByCategoryDirectory from './BooksByCategoryDirectory'
 import { CustomDivider } from '../common/CustomDivider'
 
 import { useStyles } from './styles'
@@ -16,57 +16,60 @@ import {
   groupByOwner
 } from '../../utils/helper-functions/groupBy'
 
-const BooksCollection = ({ booksCollectionGroup, match }) => {
+const BooksDirectoryPage = ({ collection, match }) => {
   const classes = useStyles()
 
-  // const category = match.params.category
-  // console.log(category)
+  let groupedCollection
+  let groupKeys
+  let toRender
 
-  if (booksCollectionGroup) {
-    const groupedCollection = groupByYear(booksCollectionGroup)
-    const groupKeys = Object.keys(groupedCollection).sort((a, b) => b - a)
+  if (collection) {
+    groupedCollection = groupByYear(collection)
+    groupKeys = Object.keys(groupedCollection).sort((a, b) => b - a)
     // const groupKeys = Object.keys(groupedCollection).sort()
-
-    return (
+    const listContainers = groupKeys.map((key, index) => {
+      while (index < groupKeys.length - 1) {
+        return (
+          <div key={`${key.trim()}`}>
+            <BooksByCategoryDirectory
+              key={`${key.trim()}`}
+              groupKey={key}
+              books={groupedCollection[key]}
+            />
+            <CustomDivider />
+          </div>
+        )
+      }
+      return (
+        <div key={`${key.trim()}`}>
+          <BooksByCategoryDirectory
+            groupKey={key}
+            books={groupedCollection[key]}
+          />
+        </div>
+      )
+    })
+    toRender = () => (
       <div className={classes.root}>
         <SearchInput />
-        <CategoryTags />
-        {groupKeys.map((key, index) => {
-          while (index < groupKeys.length - 1) {
-            return (
-              <div key={`${key.trim()}`}>
-                <CategoryListContainer
-                  key={`${key.trim()}`}
-                  groupKey={key}
-                  books={groupedCollection[key]}
-                />
-                <CustomDivider />
-              </div>
-            )
-          }
-          return (
-            <div key={`${key.trim()}`}>
-              <CategoryListContainer
-                groupKey={key}
-                books={groupedCollection[key]}
-              />
-            </div>
-          )
-        })}
+        <CategoryTagsContainer />
+        {listContainers}
       </div>
     )
   } else {
-    return (
+    toRender = () => (
       <div className={classes.root}>
         <SearchInput />
-        <CategoryTags />
+        <CategoryTagsContainer />
       </div>
     )
   }
+
+  return toRender()
 }
 
 const mapStateToProps = state => ({
-  booksCollectionGroup: state.book.collection
+  collection: state.book.collection
 })
 
-export default connect(mapStateToProps)(BooksCollection)
+export default connect(mapStateToProps)(BooksDirectoryPage)

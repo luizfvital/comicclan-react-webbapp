@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { withRouter } from 'react-router-dom'
 
 import CategoryTag from './CategoryTag'
 
@@ -6,7 +7,7 @@ import { CATEGORY_NAMES } from '../../../utils/constants/constants'
 
 import { useStyles } from './styles'
 
-const CategoryTagsContainer = () => {
+const CategoryTagsContainer = ({ history }) => {
   const classes = useStyles()
 
   const [isActive, setIsActive] = useState({
@@ -31,6 +32,7 @@ const CategoryTagsContainer = () => {
         : (newIsActive[category] = false)
     }
     setIsActive(newIsActive)
+    history.push(`/${name}`)
   }
 
   return (
@@ -64,4 +66,4 @@ const CategoryTagsContainer = () => {
   )
 }
 
-export default CategoryTagsContainer
+export default withRouter(CategoryTagsContainer)
