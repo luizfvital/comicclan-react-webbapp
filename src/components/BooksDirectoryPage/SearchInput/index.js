@@ -2,10 +2,8 @@ import React from 'react'
 import { DebounceInput } from 'react-debounce-input'
 import { connect } from 'react-redux'
 
-// Material UI
 import TextField from '@material-ui/core/TextField'
 
-// Images
 import searchIcon from '../../../assets/png/Search_Icon@2x.png'
 
 import { fetchBooksStartAsync } from '../../../redux/book/bookActions'

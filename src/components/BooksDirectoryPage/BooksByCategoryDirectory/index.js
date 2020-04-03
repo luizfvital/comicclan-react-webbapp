@@ -1,9 +1,9 @@
 import React from 'react'
 
-// Material UI
 import Typography from '@material-ui/core/Typography'
 
 import BookCard from '../../common/BookCard'
+import { CustomDivider } from '../../common/CustomDivider'
 
 import { useStyles } from './styles'
 
@@ -34,6 +34,7 @@ const BooksByCategoryDirectory = ({ groupKey, books }) => {
           ))}
         </div>
       </div>
+      <CustomDivider />
     </div>
   )
 }

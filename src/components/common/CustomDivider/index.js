@@ -1,4 +1,3 @@
-// Material UI
 import { withStyles } from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
 

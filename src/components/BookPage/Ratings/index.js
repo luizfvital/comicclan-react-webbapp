@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { ReactComponent as EmptyStar } from '../../../assets/svg/Empty_star.svg'
 import { ReactComponent as FullStar } from '../../../assets/svg/Full_star.svg'
@@ -15,11 +16,11 @@ const Ratings = ({ rating }) => {
   const emptyStar = []
 
   for (let i = 0; i < fullStarsCount; i++) {
-    fullStar.push(<FullStar key={i} className={classes.star} />)
+    fullStar.push(<FullStar key={uuidv4()} className={classes.star} />)
   }
 
   for (let i = 0; i < emptyStarsCount; i++) {
-    emptyStar.push(<EmptyStar key={i} className={classes.star} />)
+    emptyStar.push(<EmptyStar key={uuidv4()} className={classes.star} />)
   }
 
   return (

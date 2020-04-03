@@ -6,7 +6,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import Header from './layout/Header'
 import BooksDirectoryPage from './components/BooksDirectoryPage'
 import BookPage from './components/BookPage'
-import { Container } from './components/common/Container'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,12 +23,11 @@ const App = () => {
     <div className={classes.root}>
       <Router>
         <Header />
-        <Container>
-          <Switch>
-            <Route exact path='/:category?' component={BooksDirectoryPage} />
-            <Route path='/book/:book' component={BookPage} />
-          </Switch>
-        </Container>
+
+        <Switch>
+          <Route exact path='/:category?' component={BooksDirectoryPage} />
+          <Route exact path='/book/:book' component={BookPage} />
+        </Switch>
       </Router>
     </div>
   )

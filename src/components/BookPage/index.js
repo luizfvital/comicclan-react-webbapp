@@ -8,6 +8,7 @@ import BookDetails from './BookDetails'
 import BookSummary from './BookSummary'
 import OtherRandomBooks from './OtherRandomBooks'
 import { CustomDivider } from '../common/CustomDivider'
+import { Container } from '../common/Container'
 
 import { loadSelectedBook } from '../../utils/helper-functions/loadSelectedBook'
 
@@ -42,41 +43,43 @@ const BookPage = ({
 
   return (
     <div className={classes.root}>
-      <div onClick={handleClick} className={classes.backLinkContainer}>
-        <BackIcon className={classes.backIcon} />
-        <Typography variant='body1' className={classes.backLinkText}>
-          Back to collection
-        </Typography>
-      </div>
-      <div className={classes.bookContainer}>
-        <div className={classes.imgContainer}>
-          <img src={image} alt='Book' />
+      <Container>
+        <div onClick={handleClick} className={classes.backLinkContainer}>
+          <BackIcon className={classes.backIcon} />
+          <Typography variant='body1' className={classes.backLinkText}>
+            Back to collection
+          </Typography>
         </div>
-        <div className={classes.bookInfo}>
-          <div className={classes.bookNameRating}>
-            <Typography variant='h2' className={classes.bookName}>
-              {`${name} (${year})`}
-            </Typography>
-            <Ratings rating={rating} />
+        <div className={classes.bookContainer}>
+          <div className={classes.imgContainer}>
+            <img src={image} alt='Book' />
           </div>
-          <BookDetails
-            writer={writer}
-            artist={artist}
-            publication={publication}
-            owner={owner}
-          />
-          <BookSummary summary={summary} />
+          <div className={classes.bookInfo}>
+            <div className={classes.bookNameRating}>
+              <Typography variant='h2' className={classes.bookName}>
+                {`${name} (${year})`}
+              </Typography>
+              <Ratings rating={rating} />
+            </div>
+            <BookDetails
+              writer={writer}
+              artist={artist}
+              publication={publication}
+              owner={owner}
+            />
+            <BookSummary summary={summary} />
+          </div>
         </div>
-      </div>
-      <CustomDivider />
-      <div>
-        <Typography variant='h2' className={classes.otherRandomBooks}>
-          Other Random Books
-        </Typography>
-      </div>
-      <div style={{ overflowX: 'scroll' }}>
-        <OtherRandomBooks />
-      </div>
+        <CustomDivider />
+        <div>
+          <Typography variant='h2' className={classes.otherRandomBooks}>
+            Other Random Books
+          </Typography>
+        </div>
+        <div style={{ overflowX: 'scroll' }}>
+          <OtherRandomBooks />
+        </div>
+      </Container>
     </div>
   )
 }
