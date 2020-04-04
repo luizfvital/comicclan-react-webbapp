@@ -6,15 +6,11 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 
-import { useStyles } from './styles'
-
-const BookCard = ({ id, name, owner, image, history }) => {
-  const classes = useStyles()
-
+const BookCard = ({ id, name, owner, image, history, classes }) => {
   const handleClick = () => history.push(`/book/${id}`)
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.card}>
       <CardActionArea onClick={handleClick}>
         <CardMedia
           className={classes.media}

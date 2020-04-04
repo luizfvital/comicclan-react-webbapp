@@ -1,38 +1,25 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import BookCard from '../../common/BookCard'
 
 import { useStyles } from './styles'
 
-const OtherRandomBooks = () => {
+const OtherRandomBooks = ({ randomBooks }) => {
   const classes = useStyles()
+
   return (
     <div className={classes.booksContainer}>
-      <BookCard
-        name='Captain Girl #872'
-        owner='Greens'
-        image='https://comicclan.vett.io/images/image-placeholder2.svg'
-      />
-      <BookCard
-        name='Captain Girl #872'
-        owner='Greens'
-        image='https://comicclan.vett.io/images/image-placeholder2.svg'
-      />
-      <BookCard
-        name='Captain Girl #872'
-        owner='Greens'
-        image='https://comicclan.vett.io/images/image-placeholder2.svg'
-      />
-      <BookCard
-        name='Captain Girl #872'
-        owner='Greens'
-        image='https://comicclan.vett.io/images/image-placeholder2.svg'
-      />
-      <BookCard
-        name='Captain Girl #872'
-        owner='Greens'
-        image='https://comicclan.vett.io/images/image-placeholder2.svg'
-      />
+      {randomBooks.map(book => (
+        <BookCard
+          key={uuidv4()}
+          classes={classes}
+          id={book.id}
+          name={book.name}
+          owner={book.owner}
+          image={book.image}
+        />
+      ))}
     </div>
   )
 }

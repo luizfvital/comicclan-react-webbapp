@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 export const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    height: '100%'
+    height: '100%',
+    position: 'absolute'
   },
   backLinkContainer: {
     marginTop: theme.default.marginTop,
@@ -83,5 +84,12 @@ export const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down(600)]: {
       fontSize: '26px'
     }
+  },
+  notFound: {
+    height: '70vh',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    color: theme.palette.primary.main
   }
 }))

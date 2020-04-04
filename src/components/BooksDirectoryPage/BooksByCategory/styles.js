@@ -1,11 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 export const useStyles = makeStyles(theme => ({
-  booksContainer: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    minWidth: 'min-content',
-    marginBottom: '40px'
+  root: {
+    paddingBottom: '10px'
+  },
+  scrollContainer: {
+    overflowX: 'scroll',
+    overflowY: 'hidden'
   },
   card: {
     marginTop: theme.default.marginTop,

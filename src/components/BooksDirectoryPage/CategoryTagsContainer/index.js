@@ -1,37 +1,58 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import CategoryTag from './CategoryTag'
 
 import { CATEGORY_NAMES } from '../../../utils/constants/constants'
 
+import { storeSelectedCategory } from '../../../redux/category/categoryActions'
+
 import { useStyles } from './styles'
 
-const CategoryTagsContainer = ({ history }) => {
+/**
+ * Renders the tags/buttons for chosing the grouping category.
+ *
+ *    props:
+ *
+ *      history: received from react router so it can send category name as a
+ *      route parameter value.
+ *
+ *      selectedCategory: category name is stored in redux so we can keep a track of it between route changes.
+ *
+ *      storeSelectedCategory: action to store the category name into redux store.
+ */
+const CategoryTagsContainer = ({
+  history,
+  selectedCategory,
+  storeSelectedCategory
+}) => {
   const classes = useStyles()
 
-  const [isActive, setIsActive] = useState({
-    year: true,
-    writer: false,
-    artist: false,
-    owner: false,
-    random: false
-  })
+  const [isActive, setIsActive] = useState({})
+
+  useEffect(() => {
+    const updateIsActiveState = () => {
+      let newIsActive = {
+        year: '',
+        writer: '',
+        artist: '',
+        owner: '',
+        random: ''
+      }
+      for (let category in newIsActive) {
+        category === selectedCategory
+          ? (newIsActive[category] = true)
+          : (newIsActive[category] = false)
+      }
+
+      setIsActive(newIsActive)
+    }
+    updateIsActiveState()
+  }, [selectedCategory])
 
   const handleClick = name => {
-    let newIsActive = {
-      year: '',
-      writer: '',
-      artist: '',
-      owner: '',
-      random: ''
-    }
-    for (let category in newIsActive) {
-      category === name
-        ? (newIsActive[category] = true)
-        : (newIsActive[category] = false)
-    }
-    setIsActive(newIsActive)
+    storeSelectedCategory(name)
     history.push(`/${name}`)
   }
 
@@ -66,4 +87,14 @@ const CategoryTagsContainer = ({ history }) => {
   )
 }
 
-export default withRouter(CategoryTagsContainer)
+const mapStateToProps = state => ({
+  selectedCategory: state.category.selectedCategory
+})
+
+const mapDispatchToProps = dispatch => ({
+  storeSelectedCategory: selected => dispatch(storeSelectedCategory(selected))
+})
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CategoryTagsContainer)
+)

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -16,19 +16,26 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
+/**
+ * =====MAIN ROUTES=====
+ *
+ * BooksDirectoryPage: renders the homepage with a search input,
+ * category buttons for grouping options and the results from
+ * search.
+ *
+ * BookPage: renders a book page with its details and a section
+ * with 5 books randomly picked based on the search results.
+ */
 const App = () => {
   const classes = useStyles()
 
   return (
     <div className={classes.root}>
-      <Router>
-        <Header />
-
-        <Switch>
-          <Route exact path='/:category?' component={BooksDirectoryPage} />
-          <Route exact path='/book/:book' component={BookPage} />
-        </Switch>
-      </Router>
+      <Header />
+      <Switch>
+        <Route exact path='/:category?' component={BooksDirectoryPage} />
+        <Route exact path='/book/:bookId' component={BookPage} />
+      </Switch>
     </div>
   )
 }

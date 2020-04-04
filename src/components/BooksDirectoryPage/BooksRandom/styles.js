@@ -2,15 +2,26 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export const useStyles = makeStyles(theme => ({
   root: {
+    marginTop: '39px',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignContent: 'flex-start',
+    [theme.breakpoints.down('xs')]: {
+      justifyContent: 'center'
+    }
+  },
+  scrollContainer: {
+    overflowX: 'scroll',
+    overflowY: 'hidden'
+  },
+  card: {
     marginTop: theme.default.marginTop,
-    marginRight: '96px',
+    marginRight: '20px',
     width: '200px',
     height: '454.63px',
     backgroundColor: 'transparent',
-    boxShadow: 'none',
-    '&:last-child': {
-      marginRight: 0
-    }
+    boxShadow: 'none'
   },
   media: {
     width: '200px',

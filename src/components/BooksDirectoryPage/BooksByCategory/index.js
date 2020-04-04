@@ -7,12 +7,12 @@ import { CustomDivider } from '../../common/CustomDivider'
 
 import { useStyles } from './styles'
 
-const BooksByCategoryDirectory = ({ groupKey, books }) => {
+const BooksByCategory = ({ groupKey, books }) => {
   const classes = useStyles()
 
   return (
     <div className={classes.root}>
-      <Typography variant='h4' color='textSecondary' style={{}}>
+      <Typography variant='h4' color='textSecondary'>
         {groupKey}
       </Typography>
       <div className={classes.scrollContainer}>
@@ -25,8 +25,9 @@ const BooksByCategoryDirectory = ({ groupKey, books }) => {
         >
           {books.map(book => (
             <BookCard
-              id={book.id}
               key={book.id}
+              classes={classes}
+              id={book.id}
               name={book.name}
               owner={book.owner}
               image={book.image}
@@ -39,4 +40,4 @@ const BooksByCategoryDirectory = ({ groupKey, books }) => {
   )
 }
 
-export default BooksByCategoryDirectory
+export default BooksByCategory

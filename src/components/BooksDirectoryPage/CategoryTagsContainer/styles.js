@@ -25,6 +25,9 @@ export const useStyles = makeStyles(theme => ({
       fontSize: '14px',
       padding: '4px 12px 6px',
       margin: '0'
+    },
+    '& > span': {
+      userSelect: 'none'
     }
   },
   tag: {
@@ -43,6 +46,9 @@ export const useStyles = makeStyles(theme => ({
       fontSize: '14px',
       padding: '4px 12px 6px',
       margin: '0'
+    },
+    '& > span': {
+      userSelect: 'none'
     }
   }
 }))
