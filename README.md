@@ -1,8 +1,8 @@
 # ComicClan - React Webapp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comic book online library with search capabilities.
 
-## Instructions for building and serving the code
+## Instructions for serving the code
 
 In the project directory, you can run:
 
